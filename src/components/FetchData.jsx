@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 function useFetchData(category) {
   const [data, setData] = useState(null);
@@ -22,14 +21,9 @@ function useFetchData(category) {
 
 export const FetchData = ({ category = "general" }) => {
   const data = useFetchData(category);
-  const navigate = useNavigate();
 
   const handleClick = (url) => {
-    if (2 == 2) {
-      navigate("/some-path");
-    } else {
-      window.open(url);
-    }
+    window.open(url, "_blank");
   };
 
   return (
