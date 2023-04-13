@@ -9,7 +9,7 @@ function useFetchData(category) {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-        // `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=d4c522fccd9f41539a7fee8f34293e29`
+        `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=d4c522fccd9f41539a7fee8f34293e29`
       );
 
       setData(result.data.articles);
@@ -51,7 +51,7 @@ export const FetchData = ({ category = "general" }) => {
                   <div className="d-flex justify-content-center align-items-center">
                     <img
                       src={item.urlToImage}
-                      alt="Image Not Found"
+                      alt="News Image"
                       className="img-fluid"
                       style={{
                         width: "auto",
@@ -59,6 +59,7 @@ export const FetchData = ({ category = "general" }) => {
                         objectFit: "cover",
                       }}
                     />
+
                   </div>
                   <p className="my-1">{item.description}</p>
                   <a
@@ -79,7 +80,20 @@ export const FetchData = ({ category = "general" }) => {
         )}
       </div>
       <div className="text-center">
-        <button onClick={handleBackClick}>Go back</button>
+        <button
+          onClick={handleBackClick}
+          style={{
+            backgroundColor: "#2E4057",
+            color: "#FFFFFF",
+            border: "none",
+            borderRadius: "5px",
+            padding: "10px 20px",
+            cursor: "pointer",
+            transition: "background-color 0.3s ease",
+          }}
+        >
+          Go back
+        </button>
       </div>
     </div>
   );

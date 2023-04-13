@@ -1,26 +1,23 @@
 import LoginPage from "./components/signin.js";
 import { Navbar } from "./components/Navbar.jsx";
-import { Home } from "./pages/Home.jsx";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import { FetchData } from "./components/FetchData";
 import { NewsComponent } from "./components/Newscomponent";
 import './App.css';
-
-// const general = "general";
-// const business = "business";
-// const entertainment = "entertainment";
-// const health = "health";
-// const science = "science";
-// const sports = "sports";
-// const technology = "technology";
+import { Card } from "./components/Card.jsx";
+import { useState } from "react";
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
     <>
       <Router>
-        <Navbar />
+      {isAuthenticated && <Navbar onSignOut={setIsAuthenticated} />}
+      {isAuthenticated && <Card />}
         <Routes>
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/" element={<FetchData category="general"/>} />
+          {/* <Route path="/login" element={<LoginPage />} /> */}
+          <Route path="/login" element={<LoginPage onSuccessfulLogin={setIsAuthenticated} />} />
           <Route path="/news" element={<NewsComponent />} />
           <Route path="/general" element={<FetchData category="general" />} />
           <Route path="/business" element={<FetchData category="business" />} />

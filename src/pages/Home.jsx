@@ -1,12 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Card } from "../components/Card";
+import { Navbar } from "../components/Navbar";
 import { FetchData } from "../components/FetchData";
 
 export const Home = () => {
     return (
         <div>
+            <Navbar />
             <Card/>
-            <FetchData/>
+            <FetchData category="general" />
         </div>
 )};

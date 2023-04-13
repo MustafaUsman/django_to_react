@@ -3,43 +3,46 @@ import React, { useState } from "react";
 // import { faAt, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FaAt, FaLock, FaUser } from 'react-icons/fa';
 
+function LoginPage({ onSuccessfulLogin }) {
+  const [isSignUp, setIsSignUp] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [fullName, setFullName] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    // Handle login or signup
+    if (email === "asad@gmail.com" && password === "1234") {
+      onSuccessfulLogin(true);
+    }
+  };
 
-function LoginPage() {
-    const [isSignUp, setIsSignUp] = useState(false);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [fullName, setFullName] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
+  const handleSignUpSubmit = (e) => {
+    e.preventDefault();
+    // Handle login or signup
+    console.log(`Email: ${email}`);
+    console.log(`Password: ${password}`);
+    console.log(`Full Name: ${fullName}`);
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle login or signup
-        console.log(`Email: ${email}`);
-        console.log(`Password: ${password}`);
-        console.log(`Full Name: ${fullName}`);
-    };
-
-    const handleCheckboxChange = (e) => {
-        setIsSignUp(e.target.checked);
-    };
-
+  const handleCheckboxChange = (e) => {
+    setIsSignUp(e.target.checked);
+  };
 
   return (
-
-       
-
-    <div className="section">
+    <div className="section" style={{ backgroundColor: "#20201C" }}>
       <div className="container">
         <div className="row full-height justify-content-center">
           <div className="col-12 text-center align-self-center py-5">
             <div className="section pb-5 pt-5 pt-sm-2 text-center">
-              <h6 className="mb-0 pb-3">
-                Log In{' '}
-                <span onClick={() => setIsSignUp(true)} className="cursor-pointer">
-                  Sign Up
+              <h6 className="mb-0 pb-3" style={{ color: "white", fontWeight: "bold", textTransform: "uppercase" }}>
+                Log in{' '}
+                <span>
+                  sign up
                 </span>
               </h6>
+
 
               <input
                 className="checkbox"
@@ -66,30 +69,30 @@ function LoginPage() {
                         <h4 className="mb-4 pb-3" style={{ color: "white" }}>
                           Log In
                         </h4>
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleLoginSubmit}>
                           <div className="form-group">
                             <input
-                                type="email"
-                                name="logemail"
-                                className="form-style"
-                                placeholder="Your Email"
-                                id="logemail"
-                                autoComplete="off"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                              type="email"
+                              name="logemail"
+                              className="form-style"
+                              placeholder="Your Email"
+                              id="logemail"
+                              autoComplete="off"
+                              value={email}
+                              onChange={(e) => setEmail(e.target.value)}
                             />
                             <FaAt className="input-icon" />
                           </div>
                           <div className="form-group mt-2">
                             <input
-                                type="password"
-                                name="logpass"
-                                className="form-style"
-                                placeholder="Your Password"
-                                id="logpass"
-                                autoComplete="off"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
+                              type="password"
+                              name="logpass"
+                              className="form-style"
+                              placeholder="Your Password"
+                              id="logpass"
+                              autoComplete="off"
+                              value={password}
+                              onChange={(e) => setPassword(e.target.value)}
                             />
                             <FaLock className="input-icon" />
                           </div>
@@ -110,7 +113,7 @@ function LoginPage() {
                         <h4 className="mb-4 pb-3" style={{ color: "white" }}>
                           Sign Up
                         </h4>
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSignUpSubmit}>
                           <div className="form-group">
                             <input
                               type="text"
@@ -183,17 +186,7 @@ function LoginPage() {
         </div>
       </div>
     </div>
-
-    
-      );
+  );
 }
 
 export default LoginPage;
-  
-
-
-
-
-
-
-
