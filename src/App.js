@@ -1,22 +1,18 @@
 import LoginPage from "./components/signin.js";
 import { Navbar } from "./components/Navbar.jsx";
 import { Home } from "./pages/Home.jsx";
-import { Categories } from "./pages/Categories.jsx";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import FetchData from "./components/FetchData";
-
-import {NewsComponent} from "./components/Newscomponent.jsx";
-
-
+import { FetchData } from "./components/FetchData";
+import { NewsComponent } from "./components/Newscomponent";
 import './App.css';
 
-const general = "general";
-const business = "business";
-const entertainment = "entertainment";
-const health = "health";
-const science = "science";
-const sports = "sports";
-const technology = "technology";
+// const general = "general";
+// const business = "business";
+// const entertainment = "entertainment";
+// const health = "health";
+// const science = "science";
+// const sports = "sports";
+// const technology = "technology";
 
 function App() {
   return (
