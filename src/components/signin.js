@@ -3,23 +3,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAt, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 
 function LoginPage() {
-  const [isSignUp, setIsSignUp] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [fullName, setFullName] = useState('');
+    const [isSignUp, setIsSignUp] = useState(false);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [fullName, setFullName] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle login or signup
-    console.log(`Email: ${email}`);
-    console.log(`Password: ${password}`);
-    console.log(`Full Name: ${fullName}`);
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Handle login or signup
+        console.log(`Email: ${email}`);
+        console.log(`Password: ${password}`);
+        console.log(`Full Name: ${fullName}`);
+    };
 
-  const handleCheckboxChange = (e) => {
-    setIsSignUp(e.target.checked);
-  };
-  
+    const handleCheckboxChange = (e) => {
+        setIsSignUp(e.target.checked);
+    };
+
 
   return (
 
@@ -47,97 +47,97 @@ function LoginPage() {
               <label htmlFor="reg-log"></label>
               <div className="card-3d-wrap mx-auto">
                 <div className={`card-3d-wrapper ${isSignUp ? 'is-flipped' : ''}`}>
-                  <div className="card-front">
-                    <div className="center-wrap">
-                      <div className="section text-center">
-                        <h4 className="mb-4 pb-3">Log In</h4>
-                        <form onSubmit={handleSubmit}>
-                          <div className="form-group">
+        <div className="card-front">
+            <div className="center-wrap">
+                <div className="section text-center">
+                    <h4 className="mb-4 pb-3">Log In</h4>
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-group">
                             <input
-                              type="email"
-                              name="logemail"
-                              className="form-style"
-                              placeholder="Your Email"
-                              id="logemail"
-                              autoComplete="off"
-                              value={email}
-                              onChange={(e) => setEmail(e.target.value)}
+                                type="email"
+                                name="logemail"
+                                className="form-style"
+                                placeholder="Your Email"
+                                id="logemail"
+                                autoComplete="off"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                             <FontAwesomeIcon icon={faAt} className="input-icon" />
-                          </div>
-                          <div className="form-group mt-2">
+                        </div>
+                        <div className="form-group mt-2">
                             <input
-                              type="password"
-                              name="logpass"
-                              className="form-style"
-                              placeholder="Your Password"
-                              id="logpass"
-                              autoComplete="off"
-                              value={password}
-                              onChange={(e) => setPassword(e.target.value)}
+                                type="password"
+                                name="logpass"
+                                className="form-style"
+                                placeholder="Your Password"
+                                id="logpass"
+                                autoComplete="off"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                             <FontAwesomeIcon icon={faLock} className="input-icon" />
-                          </div>
-                          <button type="submit" className="btn mt-4">
+                        </div>
+                        <button type="submit" className="btn mt-4">
                             Submit
-                          </button>
-                        </form>
-                        <p className="mb-0 mt-4 text-center">
-                          <a href="#0" className="link">
+                        </button>
+                    </form>
+                    <p className="mb-0 mt-4 text-center">
+                        <a href="#0" className="link">
                             Forgot your password?
-                          </a>
-                        </p>
-                        <div className="card-back">
-                    <div className="center-wrap">
-                      <div className="section text-center">
-                        <h4 className="mb-4 pb-3">Sign Up</h4>
-                        <form onSubmit={handleSubmit}>
-                          <div className="form-group">
-                            <input
-                              type="text"
-                              name="fullname"
-                              className="form-style"
-                              placeholder="Your Full Name"
-                              id="fullname"
-                              autoComplete="off"
-                              value={fullName}
-                              onChange={(e) => setFullName(e.target.value)}
-                            />
-                            <FontAwesomeIcon icon={faUser} className="input-icon" />
-                          </div>
-                          <div className="form-group mt-2">
-                            <input
-                              type="email"
-                              name="email"
-                              className="form-style"
-                              placeholder="Your Email"
-                              id="email"
-                              autoComplete="off"
-                              value={email}
-                              onChange={(e) => setEmail(e.target.value)}
-                            />
-                            <FontAwesomeIcon icon={faAt} className="input-icon" />
-                          </div>
-                          <div className="form-group mt-2">
-                            <input
-                              type="password"
-                              name="pass"
-                              className="form-style"
-                              placeholder="Your Password"
+                        </a>
+                    </p>
+        <div className="card-back">
+          <div className="center-wrap">
+            <div className="section text-center">
+              <h4 className="mb-4 pb-3">Sign Up</h4>
+              <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    name="fullname"
+                    className="form-style"
+                    placeholder="Your Full Name"
+                    id="fullname"
+                    autoComplete="off"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                  />
+                  <FontAwesomeIcon icon={faUser} className="input-icon" />
+                </div>
+                <div className="form-group mt-2">
+                  <input
+                    type="email"
+                    name="email"
+                    className="form-style"
+                    placeholder="Your Email"
+                    id="email"
+                    autoComplete="off"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <FontAwesomeIcon icon={faAt} className="input-icon" />
+                </div>
+                <div className="form-group mt-2">
+                  <input
+                    type="password"
+                    name="pass"
+                    className="form-style"
+                    placeholder="Your Password"
                               id="pass"
-                              autoComplete="off"
-                              value={password}
-                              onChange={(e) => setPassword(e.target.value)}
-                            />
-                            <FontAwesomeIcon icon={faLock} className="input-icon" />
-                          </div>
+                    autoComplete="off"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <FontAwesomeIcon icon={faLock} className="input-icon" />
+                </div>
                           <button type="submit" className="btn mt-4">
                             Submit
-                          </button>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
+                  </button>
+              </form>
+            </div>
+          </div>
+        </div>
                 </div>
               </div>
             </div>
@@ -149,10 +149,10 @@ function LoginPage() {
     </div>
     </div>
     
-  );
+      );
 }
 export default LoginPage;
-                  
+  
 
 
 

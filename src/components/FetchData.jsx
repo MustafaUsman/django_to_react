@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function useFetchData(category) {
   const [data, setData] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,19 +18,19 @@ function useFetchData(category) {
     fetchData();
   }, [category]);
 
-  return data;
+  const handleClick = (url) => {
+    navigate(url);
+  };
+
+  return { data, handleClick };
 }
 
 export const FetchData = ({ category = "general" }) => {
-  const data = useFetchData(category);
+  const { data, handleClick } = useFetchData(category);
   const navigate = useNavigate();
 
-  const handleClick = (url) => {
-    if (2 == 2) {
-      navigate("/some-path");
-    } else {
-      window.open(url);
-    }
+  const handleBackClick = () => {
+    navigate(-1);
   };
 
   return (
@@ -77,6 +78,11 @@ export const FetchData = ({ category = "general" }) => {
           "Loading..."
         )}
       </div>
+      <div className="text-center">
+        <button onClick={handleBackClick}>Go back</button>
+      </div>
     </div>
   );
 };
+
+export default FetchData;
