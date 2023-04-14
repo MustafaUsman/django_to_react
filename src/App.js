@@ -7,6 +7,7 @@ import './App.css';
 import { Card } from "./components/Card.jsx";
 import { useState } from "react";
 import { Home } from "./pages/Home.jsx";
+import { Homepost } from "./pages/Homepost.jsx";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -20,7 +21,7 @@ function App() {
       {isAuthenticated && <Card />}
         <Routes>
         <Route path="/" element={<Home />} />
-          
+        <Route path="/homepost" element={<Homepost />} />
         
 
          
