@@ -16,7 +16,7 @@ function App() {
 
   return (
     <Router>
-      <Navbar onSignOut={setIsAuthenticated} />
+      <Navbar isAuthenticated={isAuthenticated} onSignOut={setIsAuthenticated} />
       <Card />
       <Routes>
         <Route path="/" element={<Home category={category} />} />

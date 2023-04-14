@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 
-export const Navbar = ({ onSignOut }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+export const Navbar = ({ isAuthenticated, onSignOut }) => {
+  const navigate = useNavigate();
+  const handleSignOut = () => {
+    onSignOut(false);
+    navigate("/login");
+  };
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-dark">
@@ -101,60 +105,36 @@ export const Navbar = ({ onSignOut }) => {
               </li>
             </ul>
             <div className="d-flex justify-content-between">
-            <div className="dropdown">
-              {isAuthenticated ? (
-                <>
-                  <button
-                    className="btn btn-primary dropdown-toggle rounded-pill"
-                    type="button"
-                    id="dropdownMenuButton"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                    style={{ backgroundColor: 'grey', color: 'white' }}
-                  >
-                    Hey User
-                  </button>
 
-                  <ul
-                    className="dropdown-menu"
-                    aria-labelledby="dropdownMenuButton"
-                  >
+
+              <div className="dropdown">
+                <button
+                  className="btn btn-primary dropdown-toggle rounded-pill"
+                  type="button"
+                  id="dropdownMenuButton"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style={{ backgroundColor: "grey", color: "white" }}
+                >
+                  {isAuthenticated ? "Hey User" : "Login"}
+                </button>
+
+                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  {isAuthenticated ? (
                     <li>
-                      <button
-                        className="dropdown-item"
-                        onClick={() => onSignOut(false)}
-                      >
+                      <button className="dropdown-item" onClick={handleSignOut}>
                         Sign Out
                       </button>
                     </li>
-                  </ul>
-                </>
-              ) : (
-                <>
-                  <button
-                    className="btn btn-primary dropdown-toggle rounded-pill"
-                    type="button"
-                    id="dropdownMenuButton"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                    style={{ backgroundColor: 'grey', color: 'white' }}
-                  >
-                    Login
-                  </button>
-
-                  <ul
-                    className="dropdown-menu"
-                    aria-labelledby="dropdownMenuButton"
-                  >
+                  ) : (
                     <li>
                       <Link to="/login" className="dropdown-item">
                         Login
                       </Link>
                     </li>
-                  </ul>
-                </>
-              )}
-            </div>
+                  )}
+                </ul>
+              </div>
 
 
               <div className="d-flex" style={{ marginLeft: "10px" }}>

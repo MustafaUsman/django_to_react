@@ -1,11 +1,12 @@
+// Import necessary dependencies
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
-
+// Custom hook to fetch data
 function useFetchData(category) {
   const [data, setData] = useState(null);
   const navigate = useNavigate();
-
+// Fetch data when category changes
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
@@ -17,22 +18,23 @@ function useFetchData(category) {
 
     fetchData();
   }, [category]);
-
+  // Navigate to the selected news URL
   const handleClick = (url) => {
     navigate(url);
   };
 
   return { data, handleClick };
 }
-
+// FetchData component
 export const FetchData = ({ category = "general" }) => {
   const { data, handleClick } = useFetchData(category);
   const navigate = useNavigate();
 
+  // Navigate back to the previous page
   const handleBackClick = () => {
     navigate(-1);
   };
-
+  // Render component
   return (
     <div className="container my-4">
       <h4 style={{ textAlign: "center" }}>

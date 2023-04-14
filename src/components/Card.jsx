@@ -1,5 +1,5 @@
 import React from "react";
-
+//card to be displayed under nav bar
 export const Card = () => {
     return (
         <div className="container-fluid bg-dark text-white d-flex justify-content-center align-items-center flex-column" style={{height: "30vh"}}>
