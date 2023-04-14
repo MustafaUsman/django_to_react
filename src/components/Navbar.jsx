@@ -33,7 +33,7 @@ export const Navbar = ({ onSignOut }) => {
                   aria-current="page"
                   to="/business"
                 >
-                  Business
+                  <p>Business</p>
                 </Link>
               </li>
               <li className="nav-item">
@@ -42,7 +42,7 @@ export const Navbar = ({ onSignOut }) => {
                   aria-current="page"
                   to="/entertainment"
                 >
-                  Entertainment
+                  <p>Entertainment</p>
                 </Link>
               </li>
               <li className="nav-item">
@@ -51,7 +51,7 @@ export const Navbar = ({ onSignOut }) => {
                   aria-current="page"
                   to="/health"
                 >
-                  Health
+                  <p>Health</p>
                 </Link>
               </li>
               <li className="nav-item">
@@ -69,7 +69,7 @@ export const Navbar = ({ onSignOut }) => {
                   aria-current="page"
                   to="/science"
                 >
-                  Science
+                  <p>Science</p>
                 </Link>
               </li>
               <li className="nav-item">
@@ -78,7 +78,7 @@ export const Navbar = ({ onSignOut }) => {
                   aria-current="page"
                   to="/sports"
                 >
-                  Sports
+                  <p>Sports</p>
                 </Link>
               </li>
               <li className="nav-item">
@@ -87,59 +87,75 @@ export const Navbar = ({ onSignOut }) => {
                   aria-current="page"
                   to="/technology"
                 >
-                  Technology
+                  <p>Technology</p>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className="nav-link active text-white"
+                  aria-current="page"
+                  to="/contact"
+                >
+                  <p>Contact</p>
                 </Link>
               </li>
             </ul>
             <div className="d-flex justify-content-between">
-              <div className="dropdown">
-                {isAuthenticated ? (
-                  <>
-                    <button
-                      className="btn btn-primary dropdown-toggle rounded-pill"
-                      type="button"
-                      id="dropdownMenuButton"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                      style={{ backgroundColor: "grey", color: "white" }}
-                    >
-                      Hey User
-                    </button>
+            <div className="dropdown">
+              {isAuthenticated ? (
+                <>
+                  <button
+                    className="btn btn-primary dropdown-toggle rounded-pill"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    style={{ backgroundColor: 'grey', color: 'white' }}
+                  >
+                    Hey User
+                  </button>
 
-                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <li>
-                        <button
-                          className="dropdown-item"
-                          onClick={() => onSignOut(false)}
-                        >
-                          Sign Out
-                        </button>
-                      </li>
-                    </ul>
-                  </>
-                ) : (
-                  <>
-                    <button
-                      className="btn btn-primary dropdown-toggle rounded-pill"
-                      type="button"
-                      id="dropdownMenuButton"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                      style={{ backgroundColor: "grey", color: "white" }}
-                    >
-                      Login
-                    </button>
+                  <ul
+                    className="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton"
+                  >
+                    <li>
+                      <button
+                        className="dropdown-item"
+                        onClick={() => onSignOut(false)}
+                      >
+                        Sign Out
+                      </button>
+                    </li>
+                  </ul>
+                </>
+              ) : (
+                <>
+                  <button
+                    className="btn btn-primary dropdown-toggle rounded-pill"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    style={{ backgroundColor: 'grey', color: 'white' }}
+                  >
+                    Login
+                  </button>
 
-                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <li>
-                        <Link to="/login" className="dropdown-item">
-                          Login
-                        </Link>
-                      </li>
-                    </ul>
-                  </>
-                )}
-              </div>
+                  <ul
+                    className="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton"
+                  >
+                    <li>
+                      <Link to="/login" className="dropdown-item">
+                        Login
+                      </Link>
+                    </li>
+                  </ul>
+                </>
+              )}
+            </div>
+
 
               <div className="d-flex" style={{ marginLeft: "10px" }}>
                 <Link

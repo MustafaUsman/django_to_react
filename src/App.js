@@ -8,6 +8,7 @@ import { Card } from "./components/Card.jsx";
 import { useState } from "react";
 import { Home } from "./pages/Home.jsx";
 import { Homepost } from "./pages/Homepost.jsx";
+import { Contact } from "./pages/Contact.jsx";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -23,7 +24,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/homepost" element={<Homepost />} />
         
-
+        <Route path="/contact" element={<Contact />} />
          
           {/* <Route path="/login" element={<LoginPage />} /> */}
           <Route path="/login" element={<LoginPage onSuccessfulLogin={setIsAuthenticated} />} />
