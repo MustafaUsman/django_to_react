@@ -3,12 +3,11 @@ import { Card } from "../components/Card";
 import { Navbar } from "../components/Navbar";
 import { FetchData } from "../components/FetchData";
 
-export const Homepost = () => {
+export const Homepost = ({ category }) => {
     return (
-        <div>
-            {/* <Navbar />
-            <Card/> */}
-            <FetchData category="general" />
-        </div>
-)};
-
+      <div>
+        <FetchData category={category} />
+      </div>
+    );
+  };
+  

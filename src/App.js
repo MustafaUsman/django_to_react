@@ -1,6 +1,6 @@
 import LoginPage from "./components/signin.js";
 import { Navbar } from "./components/Navbar.jsx";
-import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { FetchData } from "./components/FetchData";
 import { NewsComponent } from "./components/Newscomponent";
 import './App.css';
@@ -12,39 +12,51 @@ import { Contact } from "./pages/Contact.jsx";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  return (
-    <>
-    
-    <Router>
-      
+  const [category, setCategory] = useState("general");
 
-    {isAuthenticated && <Navbar onSignOut={setIsAuthenticated} />}
-      {isAuthenticated && <Card />}
-        <Routes>
-        <Route path="/" element={<Home />} />
+  return (
+    <Router>
+      <Navbar onSignOut={setIsAuthenticated} />
+      <Card />
+      <Routes>
+        <Route path="/" element={<Home category={category} />} />
         <Route path="/homepost" element={<Homepost />} />
-        
         <Route path="/contact" element={<Contact />} />
-         
-          {/* <Route path="/login" element={<LoginPage />} /> */}
-          <Route path="/login" element={<LoginPage onSuccessfulLogin={setIsAuthenticated} />} />
-          <Route path="/news" element={<NewsComponent />} />
-          <Route path="/general" element={<FetchData category="general" />} />
-          <Route path="/business" element={<FetchData category="business" />} />
-          <Route
-            path="/entertainment"
-            element={<FetchData category="entertainment" />}
-          />
-          <Route path="/health" element={<FetchData category="health" />} />
-          <Route path="/science" element={<FetchData category="science" />} />
-          <Route path="/sports" element={<FetchData category="sports" />} />
-          <Route
-            path="/technology"
-            element={<FetchData category="technology" />}
-          />
-        </Routes>
-      </Router>
-    </>
+        <Route
+          path="/login"
+          element={<LoginPage onSuccessfulLogin={setIsAuthenticated} />}
+        />
+        <Route path="/news" element={<NewsComponent />} />
+        <Route
+          path="/general"
+          element={<FetchData category="general" setCategory={setCategory} />}
+        />
+        <Route
+          path="/business"
+          element={<FetchData category="business" setCategory={setCategory} />}
+        />
+        <Route
+          path="/entertainment"
+          element={<FetchData category="entertainment" setCategory={setCategory} />}
+        />
+        <Route
+          path="/health"
+          element={<FetchData category="health" setCategory={setCategory} />}
+        />
+        <Route
+          path="/science"
+          element={<FetchData category="science" setCategory={setCategory} />}
+        />
+        <Route
+          path="/sports"
+          element={<FetchData category="sports" setCategory={setCategory} />}
+        />
+        <Route
+          path="/technology"
+          element={<FetchData category="technology" setCategory={setCategory} />}
+        />
+      </Routes>
+    </Router>
   );
 }
 
