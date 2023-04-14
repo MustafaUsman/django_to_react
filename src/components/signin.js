@@ -19,11 +19,11 @@ function LoginPage({ onSuccessfulLogin }) {
     // Handle login or signup
     if (email === "asad@gmail.com" && password === "1234") {
       onSuccessfulLogin(true);
-      <Link to="/Home"></Link>
+      <Link to="/"></Link>
     }
     if (email === "usman@gmail.com" && password === "1234") {
       onSuccessfulLogin(true);
-      <Link to="/Home"></Link>
+      <Link to="/"></Link>
     }
   };
 
