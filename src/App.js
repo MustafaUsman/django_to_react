@@ -6,16 +6,24 @@ import { NewsComponent } from "./components/Newscomponent";
 import './App.css';
 import { Card } from "./components/Card.jsx";
 import { useState } from "react";
+import { Home } from "./pages/Home.jsx";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
     <>
-      <Router>
-      {isAuthenticated && <Navbar onSignOut={setIsAuthenticated} />}
+    
+    <Router>
+      
+
+    {isAuthenticated && <Navbar onSignOut={setIsAuthenticated} />}
       {isAuthenticated && <Card />}
         <Routes>
-          <Route path="/" element={<FetchData category="general"/>} />
+        <Route path="/" element={<Home />} />
+          
+        
+
+         
           {/* <Route path="/login" element={<LoginPage />} /> */}
           <Route path="/login" element={<LoginPage onSuccessfulLogin={setIsAuthenticated} />} />
           <Route path="/news" element={<NewsComponent />} />

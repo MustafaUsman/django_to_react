@@ -2,6 +2,9 @@ import React, { useState } from "react";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faAt, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FaAt, FaLock, FaUser } from 'react-icons/fa';
+import { Link } from "react-router-dom";
+
+
 
 function LoginPage({ onSuccessfulLogin }) {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -9,12 +12,18 @@ function LoginPage({ onSuccessfulLogin }) {
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     // Handle login or signup
     if (email === "asad@gmail.com" && password === "1234") {
       onSuccessfulLogin(true);
+      <Link to="/Home"></Link>
+    }
+    if (email === "usman@gmail.com" && password === "1234") {
+      onSuccessfulLogin(true);
+      <Link to="/Home"></Link>
     }
   };
 

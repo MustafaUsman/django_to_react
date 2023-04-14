@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
+import { useState } from "react";
 
 export const Navbar = ({ onSignOut }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-dark">
@@ -90,31 +93,54 @@ export const Navbar = ({ onSignOut }) => {
             </ul>
             <div className="d-flex justify-content-between">
               <div className="dropdown">
-                <button
-                  className="btn btn-primary dropdown-toggle rounded-pill"
-                  type="button"
-                  id="dropdownMenuButton"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  style={{ backgroundColor: "grey", color: "white" }}
-                >
-                  Logout
-                </button>
-
-                <ul
-                  className="dropdown-menu"
-                  aria-labelledby="dropdownMenuButton"
-                >
-                  <li>
+                {isAuthenticated ? (
+                  <>
                     <button
-                      className="dropdown-item"
-                      onClick={() => onSignOut(false)}
+                      className="btn btn-primary dropdown-toggle rounded-pill"
+                      type="button"
+                      id="dropdownMenuButton"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                      style={{ backgroundColor: "grey", color: "white" }}
                     >
-                      Sign Out
+                      Hey User
                     </button>
-                  </li>
-                </ul>
+
+                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <li>
+                        <button
+                          className="dropdown-item"
+                          onClick={() => onSignOut(false)}
+                        >
+                          Sign Out
+                        </button>
+                      </li>
+                    </ul>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      className="btn btn-primary dropdown-toggle rounded-pill"
+                      type="button"
+                      id="dropdownMenuButton"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                      style={{ backgroundColor: "grey", color: "white" }}
+                    >
+                      Login
+                    </button>
+
+                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <li>
+                        <Link to="/login" className="dropdown-item">
+                          Login
+                        </Link>
+                      </li>
+                    </ul>
+                  </>
+                )}
               </div>
+
               <div className="d-flex" style={{ marginLeft: "10px" }}>
                 <Link
                   className="btn btn-primary"
