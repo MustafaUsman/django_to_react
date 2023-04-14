@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router";
 import { useState } from "react";
 
 export const Navbar = ({ onSignOut }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated] = useState(false);
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-dark">

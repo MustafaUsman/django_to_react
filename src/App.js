@@ -22,9 +22,6 @@ function App() {
         <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/homepost" element={<Homepost />} />
-        
-
-         
           {/* <Route path="/login" element={<LoginPage />} /> */}
           <Route path="/login" element={<LoginPage onSuccessfulLogin={setIsAuthenticated} />} />
           <Route path="/news" element={<NewsComponent />} />

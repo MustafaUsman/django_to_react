@@ -51,7 +51,7 @@ export const FetchData = ({ category = "general" }) => {
                   <div className="d-flex justify-content-center align-items-center">
                     <img
                       src={item.urlToImage}
-                      alt="News Image"
+                      alt=""
                       className="img-fluid"
                       style={{
                         width: "auto",
