@@ -6,7 +6,7 @@ import { useNavigate } from "react-router";
 function useFetchData(category) {
   const [data, setData] = useState(null);
   const navigate = useNavigate();
-// Fetch data when category changes
+  // Fetch data when category changes
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
@@ -18,12 +18,13 @@ function useFetchData(category) {
 
     fetchData();
   }, [category]);
-  // Navigate to the selected news URL
+
   const handleClick = (url) => {
-    navigate(url);
+    window.open(url, '_blank');
   };
 
   return { data, handleClick };
+
 }
 // FetchData component
 export const FetchData = ({ category = "general" }) => {
