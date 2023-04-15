@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faAt, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FaAt, FaLock, FaUser } from 'react-icons/fa';
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 
