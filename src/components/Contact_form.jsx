@@ -40,6 +40,7 @@ export default function ContactForm() {
       setName("");
       setEmail("");
       setMessage("");
+      setErrors([]);
     }
   };
 
@@ -132,6 +133,7 @@ export default function ContactForm() {
       <div style={{ width: "100%", marginTop: "1rem" }}>
         <button
           type="submit"
+          onClick={handleSubmit}
           style={{
             backgroundColor: "#4caf50",
             border: "none",
