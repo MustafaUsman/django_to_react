@@ -1,18 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { useState } from "react";
 
-export const Navbar = ({ onSignOut }) => {
-  const [isAuthenticated] = useState(false);
+
+export const Navbar = ({ isAuthenticated, onSignOut }) => {
+  const navigate = useNavigate();
+  // Handle sign out button click event and navigate to login page after sign out is successful 
+  const handleSignOut = () => {
+    onSignOut(false);
+    navigate("/login");
+  };
+
+  
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-dark">
+        {/*Logo*/}
         <div className="container-fluid">
+
           <Link className="navbar-brand text-white" to="/">
             <strong>
               <i>The Daily Show</i>
             </strong>
           </Link>
+          {/*Toggle button*/}
           <button
             className="navbar-toggler"
             type="button"
@@ -24,6 +36,10 @@ export const Navbar = ({ onSignOut }) => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
+
+
+
+          {/*Category list*/}
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
@@ -32,7 +48,7 @@ export const Navbar = ({ onSignOut }) => {
                   aria-current="page"
                   to="/business"
                 >
-                  Business
+                  <p>Business</p>
                 </Link>
               </li>
               <li className="nav-item">
@@ -41,7 +57,7 @@ export const Navbar = ({ onSignOut }) => {
                   aria-current="page"
                   to="/entertainment"
                 >
-                  Entertainment
+                  <p>Entertainment</p>
                 </Link>
               </li>
               <li className="nav-item">
@@ -50,7 +66,7 @@ export const Navbar = ({ onSignOut }) => {
                   aria-current="page"
                   to="/health"
                 >
-                  Health
+                  <p>Health</p>
                 </Link>
               </li>
               <li className="nav-item">
@@ -68,7 +84,7 @@ export const Navbar = ({ onSignOut }) => {
                   aria-current="page"
                   to="/science"
                 >
-                  Science
+                  <p>Science</p>
                 </Link>
               </li>
               <li className="nav-item">
@@ -77,7 +93,7 @@ export const Navbar = ({ onSignOut }) => {
                   aria-current="page"
                   to="/sports"
                 >
-                  Sports
+                  <p>Sports</p>
                 </Link>
               </li>
               <li className="nav-item">
@@ -86,69 +102,73 @@ export const Navbar = ({ onSignOut }) => {
                   aria-current="page"
                   to="/technology"
                 >
-                  Technology
+                  <p>Technology</p>
                 </Link>
               </li>
-            </ul>
+
+
+
+              {/*Contact Form */}
+              <li className="nav-item">
+                <Link
+                  className="nav-link active text-white"
+                  aria-current="page"
+                  to="/contact"
+                >
+                  <p>Contact</p>
+                </Link>
+              </li>
+            </ul> 
+
+
+            {/*Login and Sign Out dropdown button functionlity using isAuthenticated*/}
             <div className="d-flex justify-content-between">
               <div className="dropdown">
-                {isAuthenticated ? (
-                  <>
-                    <button
-                      className="btn btn-primary dropdown-toggle rounded-pill"
-                      type="button"
-                      id="dropdownMenuButton"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                      style={{ backgroundColor: "grey", color: "white" }}
-                    >
-                      Hey User
-                    </button>
-
-                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <li>
-                        <button
-                          className="dropdown-item"
-                          onClick={() => onSignOut(false)}
-                        >
-                          Sign Out
-                        </button>
-                      </li>
-                    </ul>
-                  </>
-                ) : (
-                  <>
-                    <button
-                      className="btn btn-primary dropdown-toggle rounded-pill"
-                      type="button"
-                      id="dropdownMenuButton"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                      style={{ backgroundColor: "grey", color: "white" }}
-                    >
-                      Login
-                    </button>
-
-                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <li>
-                        <Link to="/login" className="dropdown-item">
-                          Login
-                        </Link>
-                      </li>
-                    </ul>
-                  </>
-                )}
-              </div>
-
-              <div className="d-flex" style={{ marginLeft: "10px" }}>
-                <Link
-                  className="btn btn-primary"
-                  to="/news"
-                  style={{ backgroundColor: "grey" }}
+                <button
+                  className="btn btn-primary dropdown-toggle rounded-pill"
+                  type="button"
+                  id="dropdownMenuButton"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style={{ backgroundColor: "grey", color: "white" }}
                 >
-                  Submit News
-                </Link>
+                  {isAuthenticated ? "Hey User" : "Login"}
+                </button>
+
+                {/*Dropdown menu*/}
+                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                  {isAuthenticated ? (
+                    <li>
+
+                      <button className="dropdown-item" onClick={handleSignOut}>
+                        Sign Out
+                      </button>
+                    </li>
+                  ) : (
+                    <li>
+                      <Link to="/login" className="dropdown-item">
+                        Login
+                      </Link>
+                    </li>
+                  )}
+                </ul>
               </div>
+
+              {/*Submit News button which is only displayed to currenlty logged in user and not accessible by guest users*/}
+              <>
+                {isAuthenticated ? (
+                  <div className="d-flex" style={{ marginLeft: "10px" }}>
+                    <Link
+                      className="btn btn-primary"
+                      to="/news"
+                      style={{ backgroundColor: "grey" }}
+                    >
+                      Submit News
+                    </Link>
+                  </div>
+                ) : null}
+              </>
             </div>
           </div>
         </div>

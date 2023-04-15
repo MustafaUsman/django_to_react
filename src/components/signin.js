@@ -23,12 +23,14 @@ function LoginPage({ onSuccessfulLogin }) {
     if (email === "asad@gmail.com" && password === "1234") {
       onSuccessfulLogin(true);
       setIsAuthenticated(true);
-      navigate("/Homepost");
+      alert("Login Successful");
+      navigate("/");
     }
     if (email === "usman@gmail.com" && password === "1234") {
       onSuccessfulLogin(true);
       setIsAuthenticated(true);
-      navigate("/Homepost");
+      alert("Login Successful");
+      navigate("/");
     }
   };
 
