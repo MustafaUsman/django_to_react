@@ -7,20 +7,25 @@ import './App.css';
 import { Card } from "./components/Card.jsx";
 import { useState } from "react";
 import { Home } from "./pages/Home.jsx";
-import { Homepost } from "./pages/Homepost.jsx";
 import { Contact } from "./pages/Contact.jsx";
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [category, setCategory] = useState("general");
+
+  //usman@gmail.com : 1234
+  //asad@gmail.com : 1234
+
+  
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // false
+  const [category, setCategory] = useState("general"); // general
 
   return (
     <Router>
-      <Navbar isAuthenticated={isAuthenticated} onSignOut={setIsAuthenticated} />
+      {/*Rendering Navbar, Card and Routes*/}
+      <Navbar isAuthenticated={isAuthenticated} onSignOut={setIsAuthenticated} /> {/*flags to see if user is signed in or out*/}
       <Card />
       <Routes>
+        {/*Routes for the entire website*/}
         <Route path="/" element={<Home category={category} />} />
-        <Route path="/homepost" element={<Homepost />} />
         <Route path="/contact" element={<Contact />} />
         <Route
           path="/login"

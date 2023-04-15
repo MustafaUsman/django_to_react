@@ -1,33 +1,35 @@
 import { useState } from "react";
 
+//Conact form component 
 export default function ContactForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState([]);
-
+  
+  // Handle form submission 
   const handleSubmit = (event) => {
     event.preventDefault();
     const errors = [];
 
-    // Validate name
+    // Validate name 
     if (!name) {
       errors.push("Name is required.");
     }
 
-    // Validate email
+    // Validate email 
     if (!email) {
       errors.push("Email is required.");
     } else if (!/\S+@\S+\.\S+/.test(email)) {
       errors.push("Email is invalid.");
     }
 
-    // Validate message
+    // Validate message 
     if (!message) {
       errors.push("Message is required.");
     }
 
-    // If there are errors, display them and prevent form submission
+    // If there are errors, display them and prevent form submission 
     if (errors.length > 0) {
       setErrors(errors);
     } else {
@@ -42,6 +44,7 @@ export default function ContactForm() {
   };
 
   return (
+
     <div
       style={{
         width: "500px",
@@ -64,7 +67,8 @@ export default function ContactForm() {
           </ul>
         </div>
       )}
-
+    
+    {/*Name input*/}
       <div style={{ width: "100%", marginTop: "1rem" }}>
         <label style={{ display: "block", fontSize: "1.2rem", marginTop: "1rem" }}>
           Name:{" "}
@@ -84,6 +88,7 @@ export default function ContactForm() {
         </label>
       </div>
 
+        {/*Email input*/}
       <div style={{ width: "100%", marginTop: "1rem" }}>
         <label style={{ display: "block", fontSize: "1.2rem", marginTop: "1rem" }}>
           Email:{" "}
@@ -103,6 +108,7 @@ export default function ContactForm() {
         </label>
       </div>
 
+        {/*Message input*/}
       <div style={{ width: "100%", marginTop: "1rem" }}>
         <label style={{ display: "block", fontSize: "1.2rem", marginTop: "1rem" }}>
           Message:{" "}
@@ -121,7 +127,8 @@ export default function ContactForm() {
           />
         </label>
       </div>
-    
+            
+        {/*Submit button*/}
       <div style={{ width: "100%", marginTop: "1rem" }}>
         <button
           type="submit"

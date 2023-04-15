@@ -1,27 +1,31 @@
 import React, { useState } from 'react';
 
+// Modal component to display the form to add a new news item 
 const Modal = ({ isOpen, onClose, onSubmit }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('');
-
+    // Handle form submit event and pass the form data to the onSubmit callback prop function 
     const handleSubmit = (e) => {
         e.preventDefault();
         onSubmit(title, description, category);
         onClose();
     };
-
+    // If the modal is not open, return null so nothing is rendered
     if (!isOpen) return null;
 
     return (
-        
+
         <div className="fixed inset-0 flex items-center justify-center z-50">
             <div className="bg-white p-8 rounded shadow-lg">
+                {/*Close button*/}
                 <button onClick={onClose} className="float-right text-gray-500">
                     &times;
                 </button>
                 <h2 className="text-xl mb-4">Add News</h2>
+                {/*Form*/}
                 <form onSubmit={handleSubmit}>
+                    {/*Title input*/}
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title">
                             Title
@@ -34,6 +38,7 @@ const Modal = ({ isOpen, onClose, onSubmit }) => {
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         />
                     </div>
+                    {/*Description textarea input*/}
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
                             Description
@@ -46,6 +51,7 @@ const Modal = ({ isOpen, onClose, onSubmit }) => {
                             rows="3"
                         ></textarea>
                     </div>
+                    {/*Category select input*/}
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="category">
                             Category
@@ -66,7 +72,7 @@ const Modal = ({ isOpen, onClose, onSubmit }) => {
                             <option value="Technology">Technology</option>
                         </select>
                     </div>
-
+                    {/*Submit button*/}
                     <button
                         type="submit"
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-8"
@@ -79,17 +85,18 @@ const Modal = ({ isOpen, onClose, onSubmit }) => {
         </div>
     );
 };
-
+// News component to display the news items and the modal  
 export const NewsComponent = () => {
     const [newsItems, setNewsItems] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
-
+    // Add a new news item to the newsItems state array 
     const addNewsItem = (title, description, category) => {
         setNewsItems([...newsItems, { title, description, category }]);
     };
 
     return (
         <div className="mt-12">
+            {/*Add news button */}
             <button
                 onClick={() => setIsModalOpen(true)}
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-auto block mb-4"
@@ -97,11 +104,13 @@ export const NewsComponent = () => {
             >
                 Add News
             </button>
+            {/*Modal*/}
             <Modal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 onSubmit={addNewsItem}
             />
+            {/*News items*/}
             <div className="flex flex-wrap">
                 {newsItems.map((item, index) => (
                     <div key={index} className="w-1/2 p-4">
